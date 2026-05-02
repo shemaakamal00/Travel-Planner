@@ -1,0 +1,182 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f6f3ee;
+    color: #1f2933;
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  .container {
+    width: min(1100px, 90%);
+    margin: 0 auto;
+    padding: 2rem 0;
+  }
+  
+  .nav {
+    background: white;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e5e0d8;
+  }
+  
+  .nav h2 {
+    margin: 0;
+  }
+  
+  .nav div {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .nav a {
+    font-weight: 600;
+  }
+  
+  .country-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+    margin-top: 2rem;
+  }
+  
+  .country-card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .country-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+  }
+  
+  .country-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .country-card-content {
+    padding: 1rem;
+  }
+  
+  .country-card-content h3 {
+    margin: 0 0 0.4rem;
+  }
+  
+  .country-card-content p {
+    margin: 0;
+    color: #667085;
+  }
+
+  .trip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 320px));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .trip-card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  .trip-card img {
+    width: 100%;
+    height: 170px;
+    object-fit: contain;
+    background: #f8fafc;
+    display: block;
+    padding: 1rem;
+  }
+  
+  .trip-card-content {
+    padding: 1rem;
+  }
+  
+  .trip-card-content h3 {
+    margin: 0 0 0.4rem;
+  }
+  
+  .trip-card-content p {
+    margin: 0;
+    color: #667085;
+  }
+
+  .delete-btn {
+    margin-top: 1rem;
+    border: none;
+    background: #dc2626;
+    color: white;
+    padding: 0.7rem 1rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 700;
+  }
+  
+  .delete-btn:hover {
+    background: #b91c1c;
+  }
+
+  .trip-actions {
+    display: flex;
+    gap: 0.7rem;
+    margin-top: 1rem;
+  }
+  
+  .edit-btn {
+    background: #2563eb;
+    color: white;
+    padding: 0.7rem 1rem;
+    border-radius: 999px;
+    font-weight: 700;
+  }
+  
+  .trip-form {
+    max-width: 500px;
+    display: grid;
+    gap: 1rem;
+  }
+  
+  .trip-form label {
+    display: grid;
+    gap: 0.4rem;
+    font-weight: 700;
+  }
+  
+  .trip-form input,
+  .trip-form select,
+  .trip-form textarea {
+    padding: 0.8rem;
+    border: 1px solid #d0d5dd;
+    border-radius: 12px;
+  }
+  
+  .trip-form textarea {
+    min-height: 120px;
+  }
+  
+  .trip-form button {
+    border: none;
+    background: #111827;
+    color: white;
+    padding: 0.9rem 1.2rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 700;
+  }
