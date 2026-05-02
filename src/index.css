@@ -1,223 +1,312 @@
 * {
-    box-sizing: border-box;
-  }
-  
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f6f3ee;
-    color: #1f2933;
-  }
-  
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-  
-  .container {
-    width: min(1100px, 90%);
-    margin: 0 auto;
-    padding: 2rem 0;
-  }
-  
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f6f3ee;
+  color: #1f2933;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(1100px, 90%);
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* NAV */
+.nav {
+  background: white;
+  padding: 1rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e0d8;
+}
+
+.nav h2 {
+  margin: 0;
+}
+
+.nav div {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav a {
+  font-weight: 600;
+}
+
+/* HERO */
+.hero {
+  background: white;
+  padding: 3rem;
+  border-radius: 24px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  max-width: 650px;
+  color: #667085;
+  font-size: 1.1rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* BUTTONS */
+.primary-btn,
+.secondary-btn,
+.delete-btn,
+.edit-btn,
+.trip-form button {
+  border: none;
+  padding: 0.9rem 1.2rem;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.primary-btn {
+  background: #111827;
+  color: white;
+}
+
+.secondary-btn {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.delete-btn {
+  background: #dc2626;
+  color: white;
+}
+
+.edit-btn {
+  background: #2563eb;
+  color: white;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover,
+.delete-btn:hover,
+.edit-btn:hover,
+.trip-form button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* COUNTRIES */
+.country-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+.country-card {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.country-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+.country-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  display: block;
+}
+
+.country-card-content {
+  padding: 1rem;
+}
+
+.country-card-content h3 {
+  margin: 0 0 0.4rem;
+}
+
+.country-card-content p {
+  margin: 0;
+  color: #667085;
+}
+
+/* TRIPS */
+.trip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 320px));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.trip-card {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.trip-card img {
+  width: 100%;
+  height: 170px;
+  object-fit: contain;
+  background: #f8fafc;
+  display: block;
+  padding: 1rem;
+}
+
+.trip-card-content {
+  padding: 1rem;
+}
+
+.trip-card-content h3 {
+  margin: 0 0 0.4rem;
+}
+
+.trip-card-content p {
+  margin: 0;
+  color: #667085;
+}
+
+.trip-actions {
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+
+/* FORM */
+.form-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 24px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  max-width: 560px;
+}
+
+.trip-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.trip-form label {
+  display: grid;
+  gap: 0.4rem;
+  font-weight: 700;
+}
+
+.trip-form input,
+.trip-form select,
+.trip-form textarea {
+  padding: 0.8rem;
+  border: 1px solid #d0d5dd;
+  border-radius: 12px;
+  font: inherit;
+}
+
+.trip-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.trip-form input:focus,
+.trip-form select:focus,
+.trip-form textarea:focus {
+  outline: none;
+  border-color: #111827;
+  box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.12);
+}
+
+.trip-form button {
+  background: #111827;
+  color: white;
+}
+
+/* EXTRA */
+.page-title {
+  margin-bottom: 0.5rem;
+}
+
+.empty-message {
+  background: white;
+  padding: 2rem;
+  border-radius: 18px;
+  color: #667085;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.trip-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.search-input,
+.trip-controls select {
+  height: 56px;
+  padding: 0 1.2rem;
+  border: 1px solid #d0d5dd;
+  border-radius: 999px;
+  font: inherit;
+  background: white;
+}
+
+.search-input {
+  width: 420px;
+  max-width: 100%;
+}
+
+.trip-controls select {
+  min-width: 150px;
+  cursor: pointer;
+}
+
+.search-input:focus,
+.trip-controls select:focus {
+  outline: none;
+  border-color: #111827;
+  box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.12);
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
   .nav {
-    background: white;
-    padding: 1rem 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #e5e0d8;
-  }
-  
-  .nav h2 {
-    margin: 0;
-  }
-  
-  .nav div {
-    display: flex;
+    flex-direction: column;
     gap: 1rem;
-  }
-  
-  .nav a {
-    font-weight: 600;
-  }
-  
-  .country-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.2rem;
-    margin-top: 2rem;
-  }
-  
-  .country-card {
-    background: white;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .country-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
-  }
-  
-  .country-card img {
-    width: 100%;
-    height: 140px;
-    object-fit: cover;
-    display: block;
-  }
-  
-  .country-card-content {
-    padding: 1rem;
-  }
-  
-  .country-card-content h3 {
-    margin: 0 0 0.4rem;
-  }
-  
-  .country-card-content p {
-    margin: 0;
-    color: #667085;
-  }
-
-  .trip-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 320px));
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-  
-  .trip-card {
-    background: white;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  }
-  
-  .trip-card img {
-    width: 100%;
-    height: 170px;
-    object-fit: contain;
-    background: #f8fafc;
-    display: block;
-    padding: 1rem;
-  }
-  
-  .trip-card-content {
-    padding: 1rem;
-  }
-  
-  .trip-card-content h3 {
-    margin: 0 0 0.4rem;
-  }
-  
-  .trip-card-content p {
-    margin: 0;
-    color: #667085;
-  }
-
-  .delete-btn {
-    margin-top: 1rem;
-    border: none;
-    background: #dc2626;
-    color: white;
-    padding: 0.7rem 1rem;
-    border-radius: 999px;
-    cursor: pointer;
-    font-weight: 700;
-  }
-  
-  .delete-btn:hover {
-    background: #b91c1c;
-  }
-
-  .trip-actions {
-    display: flex;
-    gap: 0.7rem;
-    margin-top: 1rem;
-  }
-  
-  .edit-btn {
-    background: #2563eb;
-    color: white;
-    padding: 0.7rem 1rem;
-    border-radius: 999px;
-    font-weight: 700;
-  }
-  
-  .trip-form {
-    max-width: 500px;
-    display: grid;
-    gap: 1rem;
-  }
-  
-  .trip-form label {
-    display: grid;
-    gap: 0.4rem;
-    font-weight: 700;
-  }
-  
-  .trip-form input,
-  .trip-form select,
-  .trip-form textarea {
-    padding: 0.8rem;
-    border: 1px solid #d0d5dd;
-    border-radius: 12px;
-  }
-  
-  .trip-form textarea {
-    min-height: 120px;
-  }
-  
-  .trip-form button {
-    border: none;
-    background: #111827;
-    color: white;
-    padding: 0.9rem 1.2rem;
-    border-radius: 999px;
-    cursor: pointer;
-    font-weight: 700;
   }
 
   .hero {
-    background: white;
-    padding: 3rem;
-    border-radius: 24px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
   }
-  
-  .hero h1 {
-    font-size: clamp(2rem, 5vw, 4rem);
-    margin-bottom: 1rem;
+
+  .hero-actions,
+  .trip-actions {
+    flex-direction: column;
   }
-  
-  .hero p {
-    max-width: 650px;
-    color: #667085;
-    font-size: 1.1rem;
+
+  .trip-grid {
+    grid-template-columns: 1fr;
   }
-  
-  .hero-actions {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-  
-  .primary-btn,
-  .secondary-btn {
-    padding: 0.9rem 1.2rem;
-    border-radius: 999px;
-    font-weight: 700;
-  }
-  
-  .primary-btn {
-    background: #111827;
-    color: white;
-  }
-  
-  .secondary-btn {
-    background: #e5e7eb;
-    color: #111827;
-  }
+}
