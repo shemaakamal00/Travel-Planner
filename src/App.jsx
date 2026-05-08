@@ -7,18 +7,25 @@ import CountryDetailsPage from "./pages/CountryDetailsPage";
 import CreateTripPage from "./pages/CreateTripPage";
 import EditTripPage from "./pages/EditTripPage";
 import TripsPage from "./pages/TripsPage";
+import { getAll, create, update, remove } from "./api/tripsApi";
 
 function App() {
-  const [trips, setTrips] = useState(() => {
-    const savedTrips = localStorage.getItem("trips");
-    return savedTrips ? JSON.parse(savedTrips) : [];
-  });
+  const [trips, setTrips] = useState([]);
 
   useEffect(() => {
-    localStorage.setItem("trips", JSON.stringify(trips));
-  }, [trips]);
+    const fetchTrips = async () => {
+      try {
+        const data = await getAll();
+        setTrips(data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
 
-  const addTrip = (country) => {
+    fetchTrips();
+  }, []);
+
+  const addTrip = async (country) => {
     const alreadyExists = trips.some(
       (trip) => trip.name === country.name.common
     );
@@ -29,7 +36,6 @@ function App() {
     }
 
     const newTrip = {
-      id: Date.now(),
       name: country.name.common,
       flag: country.flags.png,
       region: country.region,
@@ -38,31 +44,30 @@ function App() {
       notes: "",
     };
 
-    setTrips((prevTrips) => [...prevTrips, newTrip]);
+    const createdTrip = await create(newTrip);
+    setTrips((prevTrips) => [...prevTrips, createdTrip]);
   };
 
-  const addManualTrip = (tripData) => {
+  const addManualTrip = async (tripData) => {
     const newTrip = {
-      id: Date.now(),
+      ...tripData,
       flag:
         tripData.flag ||
         "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
-      ...tripData,
     };
 
-    setTrips((prevTrips) => [...prevTrips, newTrip]);
+    const createdTrip = await create(newTrip);
+    setTrips((prevTrips) => [...prevTrips, createdTrip]);
   };
 
-  const deleteTrip = (id) => {
-    setTrips((prevTrips) => prevTrips.filter((trip) => trip.id !== id));
+  const deleteTrip = async (id) => {
+    const updatedTrips = await remove(id);
+    setTrips(updatedTrips);
   };
 
-  const updateTrip = (id, updatedTrip) => {
-    setTrips((prevTrips) =>
-      prevTrips.map((trip) =>
-        trip.id === Number(id) ? { ...trip, ...updatedTrip } : trip
-      )
-    );
+  const updateTrip = async (id, updatedTrip) => {
+    const updatedTrips = await update(id, updatedTrip);
+    setTrips(updatedTrips);
   };
 
   return (
@@ -72,6 +77,7 @@ function App() {
       <main className="container">
         <Routes>
           <Route path="/" element={<Home />} />
+
           <Route path="/countries" element={<CountriesPage />} />
 
           <Route

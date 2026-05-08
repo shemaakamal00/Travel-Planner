@@ -54,9 +54,9 @@ function TripsPage({ trips, deleteTrip }) {
         >
           <option value="All">All statuses</option>
           <option value="Want to go">Want to go</option>
-          <option value="Planned">Planned</option>
+          <option value="Planning">Planning</option>
           <option value="Booked">Booked</option>
-          <option value="Completed">Completed</option>
+          <option value="Visited">Visited</option>
         </select>
 
         <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>

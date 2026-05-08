@@ -29,14 +29,22 @@ function CountryDetailsPage({ addTrip }) {
   if (error) return <p>{error}</p>;
 
   return (
-    <div>
+    <div className="country-details">
       <h1>{country.name.common}</h1>
-      <img src={country.flags.png} width="200" />
 
-      <p><strong>Capital:</strong> {country.capital?.[0]}</p>
-      <p><strong>Region:</strong> {country.region}</p>
-      <p><strong>Population:</strong> {country.population}</p>
-      <button onClick={() => addTrip(country)}>
+      <img
+        className="country-flag"
+        src={country.flags.png}
+        alt={`Flag of ${country.name.common}`}
+      />
+
+      <div className="country-info">
+        <p><strong>Capital:</strong> {country.capital?.[0]}</p>
+        <p><strong>Region:</strong> {country.region}</p>
+        <p><strong>Population:</strong> {country.population.toLocaleString()}</p>
+      </div>
+
+      <button className="add-btn" onClick={() => addTrip(country)}>
         Add to Travel List ✈️
       </button>
     </div>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import TripForm from "../components/TripForm";
 
 function EditTripPage({ trips, updateTrip }) {
   const { id } = useParams();
@@ -8,6 +9,9 @@ function EditTripPage({ trips, updateTrip }) {
   const tripToEdit = trips.find((trip) => trip.id === Number(id));
 
   const [formData, setFormData] = useState({
+    name: tripToEdit?.name || "",
+    region: tripToEdit?.region || "",
+    flag: tripToEdit?.flag || "",
     status: tripToEdit?.status || "Want to go",
     budget: tripToEdit?.budget || "",
     notes: tripToEdit?.notes || "",
@@ -31,15 +35,15 @@ function EditTripPage({ trips, updateTrip }) {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!formData.status.trim()) {
-      alert("Status is required");
+    if (!formData.name.trim()) {
+      alert("Destination name is required");
       return;
     }
 
-    updateTrip(id, formData);
+    await updateTrip(id, formData);
     navigate("/trips");
   };
 
@@ -47,39 +51,12 @@ function EditTripPage({ trips, updateTrip }) {
     <section>
       <h1>Edit {tripToEdit.name}</h1>
 
-      <form onSubmit={handleSubmit} className="trip-form">
-        <label>
-          Status
-          <select name="status" value={formData.status} onChange={handleChange}>
-            <option value="Want to go">Want to go</option>
-            <option value="Planning">Planning</option>
-            <option value="Visited">Visited</option>
-          </select>
-        </label>
-
-        <label>
-          Budget
-          <input
-            type="number"
-            name="budget"
-            value={formData.budget}
-            onChange={handleChange}
-            placeholder="Example: 15000"
-          />
-        </label>
-
-        <label>
-          Notes
-          <textarea
-            name="notes"
-            value={formData.notes}
-            onChange={handleChange}
-            placeholder="Write your travel notes..."
-          />
-        </label>
-
-        <button type="submit">Save changes</button>
-      </form>
+      <TripForm
+        formData={formData}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        buttonText="Save changes"
+      />
     </section>
   );
 }
