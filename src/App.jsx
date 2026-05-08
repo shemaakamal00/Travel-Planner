@@ -39,7 +39,7 @@ function App() {
       name: country.name.common,
       flag: country.flags.png,
       region: country.region,
-      status: "Want to go",
+      status: "Vill besöka",
       budget: "",
       notes: "",
     };

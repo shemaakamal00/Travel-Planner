@@ -313,6 +313,15 @@ section > p {
   color: var(--text);
 }
 
+.country-count {
+  margin-top: 1rem;
+  color: #667085;
+}
+
+.load-more-wrapper {
+  margin-top: 2rem;
+}
+
 /* TRIPS */
 .trip-card img {
   object-fit: cover;

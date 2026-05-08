@@ -12,7 +12,7 @@ function EditTripPage({ trips, updateTrip }) {
     name: tripToEdit?.name || "",
     region: tripToEdit?.region || "",
     flag: tripToEdit?.flag || "",
-    status: tripToEdit?.status || "Want to go",
+    status: tripToEdit?.status || "Vill besöka",
     budget: tripToEdit?.budget || "",
     notes: tripToEdit?.notes || "",
   });
@@ -20,8 +20,8 @@ function EditTripPage({ trips, updateTrip }) {
   if (!tripToEdit) {
     return (
       <div>
-        <h1>Trip not found</h1>
-        <p>Go back to My Trips and choose a trip to edit.</p>
+        <h1>Resan kunde inte hittas</h1>
+        <p>Gå tillbaka till Mina resor och välj en resa att redigera.</p>
       </div>
     );
   }
@@ -39,7 +39,7 @@ function EditTripPage({ trips, updateTrip }) {
     event.preventDefault();
 
     if (!formData.name.trim()) {
-      alert("Destination name is required");
+      alert("Vänligen ange ett destinationsnamn.");
       return;
     }
 
@@ -55,7 +55,7 @@ function EditTripPage({ trips, updateTrip }) {
         formData={formData}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
-        buttonText="Save changes"
+        buttonText="Spara ändringar"
       />
     </section>
   );

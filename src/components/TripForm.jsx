@@ -8,39 +8,39 @@ function TripForm({ formData, handleChange, handleSubmit, buttonText }) {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            placeholder="Example: Tokyo"
+            placeholder="Exempel: Tokyo"
           />
         </label>
   
         <label>
-          Region
+          Världsdel
           <input
             type="text"
             name="region"
             value={formData.region}
             onChange={handleChange}
-            placeholder="Example: Asia"
+            placeholder="Exempel: Asia"
           />
         </label>
   
         <label>
-          Image URL
+          Flagga (URL)
           <input
             type="text"
             name="flag"
             value={formData.flag}
             onChange={handleChange}
-            placeholder="Paste an image URL"
+            placeholder="Klistra in en bild-URL"
           />
         </label>
   
         <label>
           Status
           <select name="status" value={formData.status} onChange={handleChange}>
-            <option value="Want to go">Want to go</option>
-            <option value="Planning">Planning</option>
-            <option value="Booked">Booked</option>
-            <option value="Visited">Visited</option>
+            <option value="Vill besöka">Vill besöka</option>
+            <option value="Planerar att besöka">Planerar att besöka</option>
+            <option value="Bokad resa">Bokad resa</option>
+            <option value="Besökt">Besökt</option>
           </select>
         </label>
   
@@ -51,17 +51,17 @@ function TripForm({ formData, handleChange, handleSubmit, buttonText }) {
             name="budget"
             value={formData.budget}
             onChange={handleChange}
-            placeholder="Example: 15000"
+            placeholder="Exempel: 15000"
           />
         </label>
   
         <label>
-          Notes
+          Anteckningar
           <textarea
             name="notes"
             value={formData.notes}
             onChange={handleChange}
-            placeholder="Write your travel notes..."
+            placeholder="Skriv dina resenoteringar..."
           />
         </label>
   

@@ -10,6 +10,7 @@ function CountriesPage() {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [regionFilter, setRegionFilter] = useState("All");
+  const [visibleCount, setVisibleCount] = useState(24);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,7 +19,7 @@ function CountriesPage() {
         setCountries(data);
       } catch (err) {
         console.log(err);
-        setError("Something went wrong...");
+        setError("oops, något gick fel. Försök igen senare.");
       } finally {
         setLoading(false);
       }
@@ -26,6 +27,10 @@ function CountriesPage() {
 
     fetchData();
   }, []);
+
+  useEffect(() => {
+    setVisibleCount(24);
+  }, [searchTerm, regionFilter]);
 
   const filteredCountries = countries.filter((country) => {
     const matchesSearch = country.name.common
@@ -38,19 +43,21 @@ function CountriesPage() {
     return matchesSearch && matchesRegion;
   });
 
-  if (loading) return <Loading text="Loading countries..." />;
+  const visibleCountries = filteredCountries.slice(0, visibleCount);
+
+  if (loading) return <Loading text="Laddar länder..." />;
   if (error) return <p>{error}</p>;
 
   return (
     <section>
-      <h1>Explore Countries</h1>
-      <p>Choose a country and start planning your next trip.</p>
+      <h1>Utforska Länder</h1>
+      <p>Välj ett land och börja planera din nästa resa.</p>
 
       <div className="trip-controls">
         <input
           className="search-input"
           type="text"
-          placeholder="Search for a country..."
+          placeholder="Sök efter ett land..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -59,7 +66,7 @@ function CountriesPage() {
           value={regionFilter}
           onChange={(e) => setRegionFilter(e.target.value)}
         >
-          <option value="All">All regions</option>
+          <option value="All">Alla regioner</option>
           <option value="Africa">Africa</option>
           <option value="Americas">Americas</option>
           <option value="Asia">Asia</option>
@@ -69,9 +76,26 @@ function CountriesPage() {
       </div>
 
       {filteredCountries.length === 0 ? (
-        <p className="empty-message">No countries found 🌍</p>
+        <p className="empty-message">Inga länder hittades 🌍</p>
       ) : (
-        <CountryList countries={filteredCountries} />
+        <>
+          <p className="country-count">
+            Visar {visibleCountries.length} av {filteredCountries.length} länder
+          </p>
+
+          <CountryList countries={visibleCountries} />
+
+          {visibleCount < filteredCountries.length && (
+            <div className="load-more-wrapper">
+              <button
+                className="primary-btn"
+                onClick={() => setVisibleCount((prev) => prev + 24)}
+              >
+                Ladda fler länder
+              </button>
+            </div>
+          )}
+        </>
       )}
     </section>
   );

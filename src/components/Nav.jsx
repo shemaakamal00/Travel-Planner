@@ -6,10 +6,10 @@ function Nav() {
       <h2>Travel Planner</h2>
 
       <div>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/countries">Countries</NavLink>
-        <NavLink to="/create">Create trip</NavLink>
-        <NavLink to="/trips">My Trips</NavLink>
+        <NavLink to="/">Hem</NavLink>
+        <NavLink to="/countries">Länder</NavLink>
+        <NavLink to="/create">Skapa resa</NavLink>
+        <NavLink to="/trips">Mina Resor</NavLink>
       </div>
     </nav>
   );

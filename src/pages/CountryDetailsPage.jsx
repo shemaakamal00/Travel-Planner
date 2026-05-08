@@ -16,7 +16,7 @@ function CountryDetailsPage({ addTrip }) {
         setCountry(data);
       } catch (err) {
         console.log(err);
-        setError("Could not load country");
+        setError("Kunde inte hitta landet. Försök igen senare.");
       } finally {
         setLoading(false);
       }
@@ -25,7 +25,7 @@ function CountryDetailsPage({ addTrip }) {
     fetchCountry();
   }, [name]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <p>Laddar sidan...</p>;
   if (error) return <p>{error}</p>;
 
   return (
@@ -39,13 +39,13 @@ function CountryDetailsPage({ addTrip }) {
       />
 
       <div className="country-info">
-        <p><strong>Capital:</strong> {country.capital?.[0]}</p>
-        <p><strong>Region:</strong> {country.region}</p>
-        <p><strong>Population:</strong> {country.population.toLocaleString()}</p>
+        <p><strong>Huvudstad:</strong> {country.capital?.[0]}</p>
+        <p><strong>Världsdel:</strong> {country.region}</p>
+        <p><strong>Befolkning:</strong> {country.population.toLocaleString()}</p>
       </div>
 
       <button className="add-btn" onClick={() => addTrip(country)}>
-        Add to Travel List ✈️
+        Lägg till i reslista ✈️
       </button>
     </div>
   );

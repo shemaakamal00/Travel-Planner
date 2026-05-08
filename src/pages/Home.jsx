@@ -4,19 +4,19 @@ function Home() {
   return (
     <section className="home-page">
       <div className="hero">
-        <h1>Plan your next adventure 🌍</h1>
+        <h1>Planera ditt nästa äventyr 🌍</h1>
         <p>
-          Explore countries, add destinations to your travel list and keep track
-          of your plans, budget and notes.
+          Utforska länder, lägg till destinationer till din reslista och håll koll
+          på dina planer, budget och anteckningar.
         </p>
 
         <div className="hero-actions">
           <Link to="/countries" className="primary-btn">
-            Explore Countries
+            Utforska Länder
           </Link>
 
           <Link to="/trips" className="secondary-btn">
-            View My Trips
+            Mina Resor
           </Link>
         </div>
       </div>

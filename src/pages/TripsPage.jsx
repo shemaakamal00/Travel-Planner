@@ -27,7 +27,7 @@ function TripsPage({ trips, deleteTrip }) {
 
   const handleDelete = (id) => {
     const confirmDelete = window.confirm(
-      "Are you sure you want to delete this trip?"
+      "Är du säker på att du vill ta bort denna resa? Detta kan inte ångras."
     );
 
     if (confirmDelete) {
@@ -37,13 +37,13 @@ function TripsPage({ trips, deleteTrip }) {
 
   return (
     <>
-      <h1 className="page-title">My trips</h1>
+      <h1 className="page-title">Mina resor</h1>
 
       <div className="trip-controls">
         <input
           className="search-input"
           type="text"
-          placeholder="Search for a trip..."
+          placeholder="Sök efter en resa..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -52,22 +52,22 @@ function TripsPage({ trips, deleteTrip }) {
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
         >
-          <option value="All">All statuses</option>
-          <option value="Want to go">Want to go</option>
-          <option value="Planning">Planning</option>
-          <option value="Booked">Booked</option>
-          <option value="Visited">Visited</option>
+          <option value="All">Alla statusar</option>
+          <option value="Vill besöka">Vill besöka</option>
+          <option value="Planerar att besöka">Planerar att besöka</option>
+          <option value="Bokad resa">Bokad resa</option>
+          <option value="Besökt">Besökt</option>
         </select>
 
         <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-          <option value="newest">Newest first</option>
-          <option value="oldest">Oldest first</option>
-          <option value="name">Name A-Z</option>
+          <option value="newest">Nyast först</option>
+          <option value="oldest">Äldst först</option>
+          <option value="name">Namn A-Ö</option>
         </select>
       </div>
 
       {filteredTrips.length === 0 ? (
-        <p className="empty-message">No trips found 🧳</p>
+        <p className="empty-message">Inga resor hittades 🧳</p>
       ) : (
         <div className="trip-grid">
           {filteredTrips.map((trip) => (
@@ -83,14 +83,14 @@ function TripsPage({ trips, deleteTrip }) {
 
                 <div className="trip-actions">
                   <Link className="edit-btn" to={`/edit/${trip.id}`}>
-                    Edit
+                    Redigera
                   </Link>
 
                   <button
                     className="delete-btn"
                     onClick={() => handleDelete(trip.id)}
                   >
-                    Delete
+                    Ta bort
                   </button>
                 </div>
               </div>

@@ -9,7 +9,7 @@ function CreateTripPage({ addManualTrip }) {
     name: "",
     region: "",
     flag: "",
-    status: "Want to go",
+    status: "Vill besöka",
     budget: "",
     notes: "",
   });
@@ -27,7 +27,7 @@ function CreateTripPage({ addManualTrip }) {
     event.preventDefault();
 
     if (!formData.name.trim()) {
-      alert("Destination name is required");
+      alert("Vänligen ange ett destinationsnamn.");
       return;
     }
 
@@ -37,14 +37,14 @@ function CreateTripPage({ addManualTrip }) {
 
   return (
     <section>
-      <h1>Create Trip</h1>
-      <p>Add your own destination to the travel list.</p>
+      <h1>Skapa Resa</h1>
+      <p>Lägg till din egen destination till reslistan.</p>
 
       <TripForm
         formData={formData}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
-        buttonText="Create trip"
+        buttonText="Skapa resa"
       />
     </section>
   );
